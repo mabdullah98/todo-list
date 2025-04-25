@@ -50,29 +50,42 @@
     </div>
 
     <script>
-
-
-
+        window.onload = function () {
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks.forEach(task => addTaskToDOM(task));
+        };
         function list() {
-            const task = document.getElementById('task').value;
-            console.log(task)
-            document.getElementById('task').value = "";
+            const taskInput = document.getElementById('task');
+            const task = taskInput.value.trim();
             if (task === "") {
                 alert("Please enter a task!");
                 return;
             }
+            addTaskToDOM(task);
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks.push(task);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            taskInput.value = "";
+        }
+        function addTaskToDOM(task) {
             let para = document.createElement("li");
             para.innerHTML = task;
-            document.getElementById("list").appendChild(para);
             let Btn = document.createElement("button");
             Btn.innerHTML = "X";
             para.appendChild(Btn);
             Btn.addEventListener("click", () => {
-                let item = document.querySelector("li");
-                item.remove();
-            })
-        };
+                para.remove();
+                removeFromLocalStorage(task);
+            });
+            document.getElementById("list").appendChild(para);
+        }
+        function removeFromLocalStorage(taskToRemove) {
+            let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks = tasks.filter(task => task !== taskToRemove);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
     </script>
+
 </body>
 
 </html>
