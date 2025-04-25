@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"
+        integrity="sha256-MDcu2xWYukLKVmsf/JP0YoMAsRfxEh5hPbMujT1GO84=" crossorigin="anonymous" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            color: #ffffff;
+        }
+
+        .black {
+            background-color: black;
+            color: white;
+
+        }
+
+        .button {
+            padding: 10px;
+            border-radius: 40px;
+            background-color: #a758f0;
+            color: white;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #9952dc;
+
+        }
+
+        .calculator {
+            padding: 10px;
+            border-radius: 30px;
+            background-color: #a758f0;
+            font-weight: 600;
+            color: white;
+            margin: 10px;
+
+        }
+
+        .Click {
+            padding: 10px;
+            border-radius: 30px;
+            background-color: #a758f0;
+            color: white;
+
+        }
+
+        #input {
+            border-radius: 10px;
+            padding: 10px 70px 10px 10px;
+            margin: 10px 10px 10px 0px;
+        }
+
+        #task {
+            border-radius: 10px;
+            padding: 10px 70px 10px 10px;
+        }
+
+        #list {
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .list {
+            padding: 10px 40px;
+            border-radius: 30px;
+            background-color: rgb(21, 0, 255);
+
+            color: azure;
+        }
+
+        .file {
+            width: 25%;
+            height: 100%;
+            background-image: url(bg1.jpg);;
+            /* color: white; */
+            margin: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 20px;
+            font-variant-numeric: diagonal-fractions;
+            border: 1px solid white;
+        }
+
+        #time {
+            font-size: 30px;
+            margin: 10px;
+        }
+
+        button {
+            background-color: #a758f0;
+            color: white;
+            padding: 10px;
+            border-radius: 10px ;
+            cursor: pointer;
+            margin-left: 2px;
+        }
+
+        .btn-add {
+            background-color: #a758f0;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+
+        #even-odd {
+            font-size: 30px;
+            margin: 0%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="file">
+        <p id="time"></p>
+        <p id="demo"></p>
+        <div>
+            <input type="number" id="input">
+            <button type="submit  " onclick="input()" class="Click">Click me</button>
+            <p id="even-odd"></p>
+        </div>
+
+        <div>
+            <input type="text" id="task" placeholder="Add new task..." />
+            <button onclick="list()" class="btn-add">Add</button>
+        </div>
+        <!-- <button id="btn" onclick="button1()">Delete</button> -->
+        <div id="list"></div>
+
+        <div style="margin-right: 10px;">
+            <button class="button" onclick="dark()">Dark/Light Mode</button>
+            <button type="number" onclick="button()" class="calculator">Calculator</button>
+        </div>
+        <br>
+
+    </div>
+
+    <script>
+        // Question 2
+        //Write a program that checks if a number is even or odd using if/else.
+
+        function input() {
+
+            var a = document.getElementById("input").value
+
+            if (a % 2 === 0) {
+                document.getElementById("even-odd").innerHTML = "Even"
+            } else {
+                document.getElementById("even-odd").innerHTML = "Odd"
+            }
+            console.log(a);
+
+        }
+
+        document.write("<br>")
+
+        // Question 3
+        // Create a function greet(name) greet function that show the greeting message with a name.
+
+
+        function greet(name = "guest") {
+            console.log(`Hello ${name}`);
+        }
+        greet("Abdullah");
+
+        document.write("<br>")
+
+        // Question 7
+        // Use spread to combine two arrays, e.g., [1,2] and [3,4].
+
+        var ary1 = [1, 2]
+        var ary2 = [ary1, 3, 4]
+        console.log(ary2);
+
+        document.write("<br>")
+
+        var ary1 = [1, 2]
+        var ary2 = [3, 4]
+        var ary = [...ary1, ary2]
+        console.log(ary);
+
+
+        document.write("<br>")
+
+        // Question 5
+        // Create an array of fruits of 5 to 6 indexes and display them on the page.
+
+        var fruits = ["Apple", " ", "Banana", " ", "Mango", " ", "Strawberry", " ", "Lemon"]
+        console.log(fruits);
+        document.write("<br>")
+
+        // Question 8
+        // Use setInterval to create a simple digital clock that updates every second.
+
+        setInterval(timer, 3000)
+
+        function timer() {
+            var data = new Date();
+            document.getElementById("time").innerHTML = data.toLocaleString();
+        }
+
+        document.write("<br>")
+
+        // Question 6
+        // Create a function that takes an array of users and returns only those over age 18 using .filter().
+        let user = [{
+            name: "Abdullah",
+            age: 18,
+        },
+        {
+            name: "Danish",
+            age: 17,
+        },
+        {
+            name: "Ali",
+            age: 20,
+        }]
+        let adults = user.filter(find => find.age > 18);
+        console.log(adults);
+
+        // Question 9
+        // Create a light/dark mode toggle and save the mode in localStorage.
+
+        function dark() {
+            let localStorage = document.body;
+            localStorage.classList.toggle("black");
+        }
+
+        // Question 1
+        // Build a simple calculator that performs +, -, *, / using prompt() for input.
+        function button() {
+
+            var num1 = parseFloat(prompt("first number:"));
+            var opeator = prompt("Enter the opeator(%,+,-,*):");
+            var num2 = parseFloat(prompt("second number:"));
+            var result;
+
+            if (opeator === "*") {
+                result = num1 + num2;
+            }
+            else if (opeator === "/") {
+                result = num1 - num2;
+            }
+            else if (opeator === "+") {
+                result = num1 * num2;
+            }
+            else if (opeator === "-") {
+                result = num1 / num2;
+            }
+            alert("Result:  " + result);
+        }
+
+        document.write("<br>")
+
+        // Question 4
+        // Make a to-do list: Add new items to a list using an input field and a button and also delete the element.
+
+        function list() {
+            const task = document.getElementById('task').value;
+            console.log(task)
+            document.getElementById('task').value = "";
+            if (task === "") {
+                alert("Please enter a task!");
+                return;
+            }
+            let para = document.createElement("li");
+            para.innerHTML = task;
+            document.getElementById("list").appendChild(para);
+            let Btn = document.createElement("button");
+            Btn.innerHTML = "X";
+            para.appendChild(Btn);
+            Btn.addEventListener("click", () => {
+                let item = document.querySelector("li");
+                item.remove();
+            })
+        };
+
+
+        // function button1() {
+        //     var btn = document.createElement("p");
+        //     btn.innerHTML.remove();
+        // }
+    </script>
+</body>
+
+</html>

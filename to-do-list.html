@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: #8150F2;
+            color: white;
+            padding: 10px;
+        }
+
+        #task {
+            padding: 10px;
+        }
+
+        li {
+            display: flex;
+            margin: 20px 0 0 0;
+            border: 1px solid;
+            width: 12.6%;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <input type="text" id="task" placeholder="Task To Be Done..." />
+        <button onclick="list()" class="btn-add">Add</button>
+        <div id="list"></div>
+    </div>
+
+    <script>
+
+
+
+        function list() {
+            const task = document.getElementById('task').value;
+            console.log(task)
+            document.getElementById('task').value = "";
+            if (task === "") {
+                alert("Please enter a task!");
+                return;
+            }
+            let para = document.createElement("li");
+            para.innerHTML = task;
+            document.getElementById("list").appendChild(para);
+            let Btn = document.createElement("button");
+            Btn.innerHTML = "X";
+            para.appendChild(Btn);
+            Btn.addEventListener("click", () => {
+                let item = document.querySelector("li");
+                item.remove();
+            })
+        };
+    </script>
+</body>
+
+</html>
