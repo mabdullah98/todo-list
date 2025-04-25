@@ -6,32 +6,44 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body {
+            background-color: #9856f1;
+        }
+
         button {
-            background-color: #8150F2;
+            background-color: #7f52ec;
             color: white;
             padding: 10px;
+            border: none;
         }
 
         #task {
             padding: 10px;
         }
-        
+
 
         li {
             display: flex;
             margin: 20px 0 0 0;
-            border-bottom: 1px solid #c9c9c9; 
-            width: 12.6%;
+            border-bottom: 1px solid #c9c9c9;
             justify-content: space-between;
             align-items: center;
             padding: 0 0 4px 2px;
+        }
+
+        .bg-color {
+            background: white;
+            width: 12.7%;
+            padding: 10px;
+            align-items: center;
+            border-radius: 10px;
         }
     </style>
 </head>
 
 <body>
 
-    <div>
+    <div class="bg-color">
         <input type="text" id="task" placeholder="Task To Be Done..." />
         <button onclick="list()" class="btn-add">Add</button>
         <div id="list"></div>
